@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+.scss
+.css.map
+.map
 
 # testing
 /coverage
