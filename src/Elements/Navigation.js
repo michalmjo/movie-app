@@ -1,8 +1,8 @@
 const Navigation = ({ nav }) => {
-  console.log(nav);
+  const { name } = nav;
   return (
     <>
-      <li></li>
+      <li>{name}</li>
     </>
   );
 };
