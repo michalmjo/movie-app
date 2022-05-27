@@ -1,2 +1,2 @@
-img{width:100px}
+.banner{position:relative}.banner img{position:absolute;width:100%}.banner__title,.banner__description{position:absolute;bottom:0}
 /*# sourceMappingURL=header.css.map */
