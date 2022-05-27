@@ -1,2 +1,2 @@
-.banner{position:relative}.banner img{position:absolute;width:100%}.banner__title,.banner__description{position:absolute;bottom:0}
+.mainNavigation{position:fixed;top:0}.banner{position:relative;height:20vh;width:90vw;margin:50px auto}.banner__pic{border-radius:25px;height:100%;background-repeat:no-repeat;background-position:center;background-size:cover;-o-object-fit:fill;object-fit:fill;width:100%;margin:auto}.banner .banner__text-title,.banner .banner__text-description{margin:0 15px;position:absolute;bottom:15%}.banner .banner__text-title{bottom:50%;font-size:2.6rem}
 /*# sourceMappingURL=header.css.map */

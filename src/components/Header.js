@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 import Navigation from "../Elements/Navigation";
 import { apiKeyInfo, requests } from "../api/apiInformation";
@@ -18,16 +18,31 @@ const navigationElements = [
 const Header = () => {
   const [movie, setMovie] = useState();
 
+  const [showMenu, setShowMenu] = useState();
+  const transitionNavBar = () => {
+    if (window.scrollY > 100) {
+      setShowMenu(true);
+    } else {
+      setShowMenu(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", transitionNavBar);
+    return () => window.addEventListener("scroll", transitionNavBar);
+  }, []);
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
         `${apiKeyInfo.baseUrl}${requests.fetchNetflixOriginals}`
       );
       const data = await response.json();
+      console.log(data);
 
       const index = Math.floor(Math.random() * data.results.length - 1);
 
-      setMovie(data.results[index].backdrop_path);
+      setMovie(data.results[index]);
     }
     fetchData();
   }, []);
@@ -37,22 +52,22 @@ const Header = () => {
   ));
   return (
     <>
-      <nav className="mainNavigation">
+      <nav className={`mainNavigation ${showMenu && "mainNavigation--color"}`}>
         <ul className="mainNavigation__list">{navigation}</ul>
       </nav>
       <section className="banner">
-        <img
-          src={`https://image.tmdb.org/t/p/original${movie}`}
-          alt="zdjecie"
-          loading={lazy}
-        />
-        <h1 className="banner__title">Movie name</h1>
-        <p className="banner__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam impedit
-          dolorem non ex dignissimos similique, ut hic unde aperiam sequi
-          sapiente ducimus ullam aliquam explicabo natus, tenetur, id sint
-          f81980ff410e46f422d64ddf3a56dddd facere?
-        </p>
+        <div
+          className="banner__pic banner__text"
+          style={{
+            backgroundImage: `url("https://image.tmdb.org/t/p/original${movie?.backdrop_path}")`,
+          }}
+        >
+          <h1 className="banner__text-title">
+            {movie?.name || movie?.orginal_name}
+          </h1>
+
+          <p className="banner__text-description">{movie?.overview}</p>
+        </div>
       </section>
     </>
   );

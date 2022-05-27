@@ -1,15 +1,37 @@
+.mainNavigation {
+    position: fixed;
+    top: 0;
+}
+
 .banner {
     position: relative;
+    height: 20vh;
+    width: 90vw;
 
+    margin: 50px auto;
 
-    img {
-        position: absolute;
+    &__pic {
+        border-radius: 25px;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        object-fit: fill;
         width: 100%;
+        margin: auto;
     }
 
-    &__title,
-    &__description {
+    .banner__text-title,
+    .banner__text-description {
+        margin: 0 15px;
         position: absolute;
-        bottom: 0;
+        bottom: 15%;
     }
+
+    .banner__text-title {
+        bottom: 50%;
+        font-size: 2.6rem;
+    }
+
+
 }

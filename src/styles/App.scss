@@ -1,3 +1,5 @@
+@import '_Variabless.scss';
+
 * {
     margin: 0;
     padding: 0;
@@ -6,6 +8,11 @@
 
 body {
     min-height: 100vh;
-    background-color: rgb(41, 41, 41);
+    background-color: $main-bg-color;
     color: white;
+    margin: 0 5%;
+}
+
+.App {
+    position: relative;
 }
