@@ -1,12 +1,22 @@
 .mainNavigation {
     position: fixed;
     top: 0;
+    padding-left: 50px;
+    left: 0;
+    z-index: 999;
+    transition: all 0.5s;
+    background: transparent;
+}
+
+.mainNavigation--bg {
+    width: 100%;
+    background-color: black;
 }
 
 .banner {
     position: relative;
     height: 20vh;
-    width: 90vw;
+    // width: 90vw;
 
     margin: 50px auto;
 

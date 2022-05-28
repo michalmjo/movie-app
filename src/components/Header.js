@@ -16,6 +16,10 @@ const navigationElements = [
 ];
 
 const Header = () => {
+  const truncate = (string, n = 150) => {
+    return string?.length > n ? string.substr(0, n - 1) + `...` : string;
+  };
+
   const [movie, setMovie] = useState();
 
   const [showMenu, setShowMenu] = useState();
@@ -52,7 +56,7 @@ const Header = () => {
   ));
   return (
     <>
-      <nav className={`mainNavigation ${showMenu && "mainNavigation--color"}`}>
+      <nav className={`mainNavigation ${showMenu && "mainNavigation--bg"}`}>
         <ul className="mainNavigation__list">{navigation}</ul>
       </nav>
       <section className="banner">
@@ -66,7 +70,9 @@ const Header = () => {
             {movie?.name || movie?.orginal_name}
           </h1>
 
-          <p className="banner__text-description">{movie?.overview}</p>
+          <p className="banner__text-description">
+            {truncate(movie?.overview)}{" "}
+          </p>
         </div>
       </section>
     </>
