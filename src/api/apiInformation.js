@@ -5,10 +5,11 @@ export const apiKeyInfo = {
 };
 
 export const requests = {
-  fetchTrending: `/trending/all/week?api_key=${apiKeyInfo.apiKey}&language=en-US`,
   fetchNetflixOriginals: `/discover/tv?api_key=${apiKeyInfo.apiKey}&with_networks=213`,
+  fetchTrending: `/trending/all/week?api_key=${apiKeyInfo.apiKey}&language=en-US`,
   fetchComedyMovies: `/discover/movie?api_key=${apiKeyInfo.apiKey}&with_genres=35`,
   fetchHorrorMovies: `/discover/movie?api_key=${apiKeyInfo.apiKey}&with_genres=27`,
   fetchRomanceMovies: `/discover/movie?api_key=${apiKeyInfo.apiKey}&with_genres=10749`,
   fetchDocumentaries: `/discover/movie?api_key=${apiKeyInfo.apiKey}&with_genres=99`,
+  fetchAction: `/discover/movie?api_key=${apiKeyInfo.apiKey}&with_genres=28`,
 };

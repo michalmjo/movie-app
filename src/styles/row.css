@@ -1,1 +1,2 @@
-/* No CSS *//*# sourceMappingURL=row.css.map */
+.row__posters{display:-webkit-box;display:-ms-flexbox;display:flex;overflow-x:scroll;overflow-y:hidden;padding:20px}.row__posters::-webkit-scrollbar{display:none}.row__poster{max-height:100px;margin-right:10px;-webkit-transition:-webkit-transform 450ms;transition:-webkit-transform 450ms;transition:transform 450ms;transition:transform 450ms, -webkit-transform 450ms}.row__poster:hover{-webkit-transform:scale(1.08);transform:scale(1.08)}.row__posterLarge{max-height:250px}
+/*# sourceMappingURL=row.css.map */

@@ -1,3 +1,4 @@
+import "../styles/row.css";
 import { useEffect, useState } from "react";
 import { apiKeyInfo } from "../api/apiInformation";
 
@@ -20,6 +21,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
   const allMovies = movies.map((movie) => {
     return (
       <img
+        key={movie.id}
         className={`row__poster ${isLargeRow && "row__posterLarge"}`}
         src={`${apiKeyInfo.baseImgUrl}${
           isLargeRow ? movie.poster_path : movie.backdrop_path
@@ -33,7 +35,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
     <>
       <div className="row">
         <h2>{title}</h2>
-        {allMovies}
+        <div className="row__posters">{allMovies}</div>
       </div>
     </>
   );
