@@ -22,7 +22,6 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
   console.log(movies);
 
   const handleMovieInfoModal = (e) => {
-    console.log("klik");
     setIsModalOpen(true);
     setSelectedMovie(e.target.alt);
   };
