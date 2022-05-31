@@ -2,9 +2,11 @@ import "../styles/row.css";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import { apiKeyInfo } from "../api/apiInformation";
+import LoadingScreen from "./LoadingScreen";
 
 const Row = ({ title, fetchUrl, isLargeRow = false }) => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState([]);
 
@@ -15,6 +17,9 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
       const data = await request.json();
 
       setMovies(data.results);
+      setTimeout(() => {
+        setLoading(true);
+      }, 500);
     };
 
     fetchData();
@@ -50,10 +55,14 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
 
   return (
     <>
-      <div className="row">
-        <h2>{title}</h2>
-        <div className="row__posters">{allMovies}</div>
-      </div>
+      {loading ? (
+        <div className="row">
+          <h2>{title}</h2>
+          <div className="row__posters">{allMovies}</div>
+        </div>
+      ) : (
+        <LoadingScreen />
+      )}
       {isModalOpen && (
         <Modal
           movie={selectedMovie}

@@ -1,6 +1,6 @@
 export const apiKeyInfo = {
   apiKey: "f81980ff410e46f422d64ddf3a56dddd", // 3cbe5c4e11f13be89dfacaaeab649130  awaryjny
-  baseUrl: "http://api.themoviedb.org/3",
+  baseUrl: "https://api.themoviedb.org/3",
   baseImgUrl: "https://image.tmdb.org/t/p/original/",
   searchOneMovie:
     "https://api.themoviedb.org/3/search/movie?api_key=3cbe5c4e11f13be89dfacaaeab649130&query=",
