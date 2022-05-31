@@ -1,2 +1,2 @@
-.modal{position:fixed;top:0;left:0;right:0;left:0;background-color:black;height:100vh;z-index:1000}
+.modal{position:fixed;overflow:hidden;top:0;left:0;right:0;left:0;background-color:black;min-height:100vh;z-index:1000}.modal__wrap{width:100vw;position:relative;height:450px;background-repeat:no-repeat;background-position:center;background-size:cover;-o-object-fit:contain;object-fit:contain}.modal__wrap-bottomShadow{height:100%;width:100%;position:absolute;bottom:0;background:#000;background:-webkit-gradient(linear, left bottom, left top, from(#000), color-stop(28%, rgba(255,201,2,0)));background:linear-gradient(0deg, #000 0%, rgba(255,201,2,0) 28%)}
 /*# sourceMappingURL=modal.css.map */
