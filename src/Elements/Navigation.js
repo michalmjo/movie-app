@@ -1,8 +1,13 @@
+import { NavLink } from "react-router-dom";
+
 const Navigation = ({ nav }) => {
-  const { name } = nav;
+  console.log(nav);
+  const { name, path } = nav;
   return (
     <>
-      <li>{name}</li>
+      <li>
+        <NavLink to={path}>{name}</NavLink>
+      </li>
     </>
   );
 };

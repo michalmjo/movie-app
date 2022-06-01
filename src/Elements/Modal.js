@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ReactDom from "react-dom";
 import { apiKeyInfo } from "../api/apiInformation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee, faCirclePlay } from "@fortawesome/free-solid-svg-icons";
+import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 
 import "../styles/modal.css";
 

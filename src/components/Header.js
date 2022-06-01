@@ -8,10 +8,12 @@ const navigationElements = [
   {
     id: uuid(),
     name: "Movies",
+    path: "/",
   },
   {
     id: uuid(),
     name: "My List",
+    path: "/list",
   },
 ];
 
