@@ -1,5 +1,7 @@
 import { apiKeyInfo } from "../api/apiInformation";
 import "../styles/movieSearchList.css";
+import { addMovieToList } from "../actions/actions";
+import { useDispatch } from "react-redux";
 
 const MovieSearchList = ({ movies }) => {
   const {
@@ -9,7 +11,14 @@ const MovieSearchList = ({ movies }) => {
     release_date,
     vote_average,
     backdrop_path,
+    id,
   } = movies;
+  const dispatch = useDispatch();
+
+  const handleAddMovieToFav = () => {
+    dispatch(addMovieToList(id));
+  };
+
   return (
     <div className="list__movie">
       <img
@@ -23,7 +32,7 @@ const MovieSearchList = ({ movies }) => {
         <p>Vote: {vote_average}</p>
       </div>
       <div>
-        <button>Add to list</button>
+        <button onClick={() => handleAddMovieToFav(id)}>Add to list</button>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import "../styles/list.css";
 import SearchMovie from "../Elements/SearchMovie";
+import FavouriteList from "../Elements/FavouriteList";
 
 const List = () => {
   return (
@@ -11,7 +12,7 @@ const List = () => {
         </div>
         <div list__favorites>
           <div className="list__favorites--movie">
-            <p className="list__title">ASD</p>
+            <FavouriteList />
           </div>
         </div>
       </div>
