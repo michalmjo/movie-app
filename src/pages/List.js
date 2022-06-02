@@ -10,8 +10,9 @@ const List = () => {
           <h3>My favorites</h3>
           <SearchMovie />
         </div>
-        <div list__favorites>
+        <div className="list__favorites">
           <div className="list__favorites--movie">
+            <h4>My movies</h4>
             <FavouriteList />
           </div>
         </div>

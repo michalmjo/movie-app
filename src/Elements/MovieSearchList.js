@@ -26,12 +26,12 @@ const MovieSearchList = ({ movies }) => {
         src={`${apiKeyInfo.baseImgUrl}${poster_path || backdrop_path}`}
         alt={`${title}`}
       />
-      <div>
+      <div className="list__movie--description">
         <p>{original_title}</p>
         <p>{release_date}</p>
         <p>Vote: {vote_average}</p>
       </div>
-      <div>
+      <div className="list__movie--btn">
         <button onClick={() => handleAddMovieToFav(id)}>Add to list</button>
       </div>
     </div>

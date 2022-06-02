@@ -1,4 +1,4 @@
-import { movieAction, addMovieToList, searchMovie } from "../actions/actions";
+import { movieAction } from "../actions/actions";
 
 const movieSearch = {
   movies: [],
@@ -11,7 +11,12 @@ const movieReducer = (state = movieSearch, action) => {
       const searchMovie = state.movies.filter(
         (item) => item.id === action.payload.id
       );
-      return { ...state, movie: [...state.movie, ...searchMovie] };
+
+      return {
+        ...state,
+
+        movie: [...state.movie, ...searchMovie],
+      };
 
     case movieAction.SEARCH_MOVIE:
       return { ...state, movies: [...action.payload] };

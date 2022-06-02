@@ -1,2 +1,2 @@
-.list__movie{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.list__movie-poster{width:70px}
+.list__movie{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:10px 20px;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;background-color:#3b3b3b}.list__movie-poster{width:70px}.list__movie--description{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;font-size:1.2rem}
 /*# sourceMappingURL=movieSearchList.css.map */

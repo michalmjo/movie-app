@@ -38,11 +38,11 @@ const SearchMovie = () => {
   };
   return (
     <div className="list__search--movie">
-      <form onChange={handleSearchMovie}>
-        <input type="text" />
+      <p>{value === "" ? `Search Movie` : null}</p>
+      <form className="list__search--movie-form" onChange={handleSearchMovie}>
+        <input className="list__search--movie-input" type="text" />
       </form>
       <div className="list__search--movie-list">
-        <p>lista znalezionych filmow</p>
         {value === "" ? null : allMovie}
       </div>
     </div>

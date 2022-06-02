@@ -15,10 +15,39 @@
         list-style: none;
         align-items: center;
 
+
+
         li {
             margin: 0 25px;
             align-self: center;
             font-size: 1.4rem;
+
+            .navigation__link {
+                position: relative;
+                text-decoration: none;
+                color: white;
+                font-weight: bold;
+                padding-right: 10px;
+                cursor: pointer;
+                text-align: center;
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    width: 0%;
+                    height: 2px;
+                    background-color: crimson;
+                    bottom: -5px;
+                    left: 0;
+                    transition: 0.3s ease;
+
+
+                }
+
+                &:hover::before {
+                    width: 80%;
+                }
+            }
 
         }
     }
