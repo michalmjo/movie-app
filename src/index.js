@@ -3,19 +3,19 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
-// import { Provider } from "react-redux";
-// import store from "./store/store";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter as Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      {/* <Provider store={store}> */}
-      <App />
-      {/* </Provider> */}
-    </BrowserRouter>
+    <Route>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Route>
   </React.StrictMode>
 );
 
