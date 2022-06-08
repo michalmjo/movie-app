@@ -1,7 +1,8 @@
 import { apiKeyInfo } from "../api/apiInformation";
 import "../styles/movieSearchList.css";
 import { addMovieToList } from "../actions/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
 const MovieSearchList = ({ movies }) => {
   const {
@@ -14,9 +15,25 @@ const MovieSearchList = ({ movies }) => {
     id,
   } = movies;
   const dispatch = useDispatch();
+  const favListMovie = useSelector((state) => state.movieList.movie);
+  const [exist, setExist] = useState(false);
 
-  const handleAddMovieToFav = () => {
-    dispatch(addMovieToList(id));
+  const showIsExist = () => {
+    setExist(true);
+    setTimeout(() => {
+      setExist(false);
+    }, 2000);
+  };
+
+  console.log(favListMovie);
+  const handleAddMovieToFav = (id) => {
+    console.log(favListMovie);
+    if (id) {
+      for (const movie of favListMovie) {
+        if (id === movie.id) return showIsExist();
+      }
+      dispatch(addMovieToList(id));
+    }
   };
 
   return (
@@ -32,6 +49,11 @@ const MovieSearchList = ({ movies }) => {
         <p>Vote: {vote_average}</p>
       </div>
       <div className="list__movie--btn">
+        {exist ? (
+          <span className="list__movie--btn-msg active">
+            Movie exist on your list
+          </span>
+        ) : null}
         <button onClick={() => handleAddMovieToFav(id)}>Add to list</button>
       </div>
     </div>
