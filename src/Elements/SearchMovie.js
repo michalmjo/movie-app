@@ -40,7 +40,11 @@ const SearchMovie = () => {
     <div className="list__search--movie">
       <p>{value === "" ? `Search Movie` : null}</p>
       <form className="list__search--movie-form" onChange={handleSearchMovie}>
-        <input className="list__search--movie-input" type="text" />
+        <input
+          placeholder="Add title"
+          className="list__search--movie-input"
+          type="text"
+        />
       </form>
       <div className="list__search--movie-list">
         {value === "" ? null : allMovie}

@@ -1,2 +1,2 @@
-.list__search--movie-form{margin:10px 0}.list__search--movie-list{position:relative;max-height:300px;overflow:auto;overflow-x:hidden}
+.list__search--movie-form{margin:10px 0;color:white}.list__search--movie-input{background:rgba(255,255,255,0.25);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border-radius:10px;color:white;padding:10px;color:white;outline:none;border:none}.list__search--movie-list{position:relative;max-height:300px;overflow:auto;overflow-x:hidden}
 /*# sourceMappingURL=searchMovie.css.map */
