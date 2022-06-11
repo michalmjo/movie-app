@@ -52,10 +52,14 @@ const Modal = ({ open, onClose, movie }) => {
             </a>
           </button>
         </div>
-        <h2 className="movie__name">{movie.title}</h2>
-        <p className="description">{movie.overview}</p>
-        <div className="movie__info">
-          <div className="movie__info-release">{movie.release_date}</div>
+        <div className="movie__description">
+          <h2 className="movie__description-name">{movie.title}</h2>
+          <p className="movie__description-text">{movie.overview}</p>
+          <div className="movie__description-info">
+            <div className="movie__description-info-realease">
+              Realease data: {movie.release_date}
+            </div>
+          </div>
         </div>
       </div>
     );

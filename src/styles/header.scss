@@ -1,3 +1,5 @@
+// mobile
+
 .mainNavigation {
     position: fixed;
     top: 0;
@@ -63,7 +65,7 @@
     height: 20vh;
     // width: 90vw;
 
-    margin: 50px auto;
+    margin: 50px 5%;
 
     &__pic {
         border-radius: 25px;
@@ -89,4 +91,49 @@
     }
 
 
+}
+
+
+
+
+// width 1023
+
+@media screen and (min-width: 1024px) {
+    .banner {
+        position: relative;
+        margin: 0;
+        height: 448px;
+
+        &__pic {
+            border-radius: 0;
+
+            &::after {
+                content: '';
+                display: block;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                bottom: -2px;
+                background: #000;
+                background: linear-gradient(0deg, #000 0%, rgba(255, 201, 2, 0) 30%);
+            }
+        }
+
+        .banner__text-title,
+        .banner__text-description {
+            position: absolute;
+            margin: 0 15px;
+            bottom: 35%;
+            left: 5%;
+            font-size: 1.5rem;
+        }
+
+        .banner__text-title {
+            bottom: 50%;
+            left: 5%;
+            font-size: 3.6rem;
+        }
+
+
+    }
 }

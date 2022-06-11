@@ -6,13 +6,16 @@
     box-sizing: border-box;
 }
 
+
+
 body {
     background-color: $main-bg-color;
     color: white;
-    margin: 0 5%;
+
 }
 
 .App {
     position: relative;
     min-height: calc(100vh - 50px);
+
 }
