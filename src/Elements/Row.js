@@ -25,7 +25,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
       setMovies(data.results);
       setTimeout(() => {
         setLoading(true);
-      }, 500);
+      }, 1500);
     };
 
     fetchData();

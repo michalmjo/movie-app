@@ -3,7 +3,7 @@ import "../styles/footer.css";
 const Footer = () => {
   return (
     <>
-      <footer>Copyright</footer>
+      <footer>Copyright &copy; Movies from - The movie Database API</footer>
     </>
   );
 };
