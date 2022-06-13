@@ -1,2 +1,2 @@
-footer{margin:30px 0;text-align:center;z-index:1212}
+footer{position:absolute;bottom:-20px;left:50%;-webkit-transform:translate(-50%, 10%);transform:translate(-50%, 10%);text-align:center}
 /*# sourceMappingURL=footer.css.map */
