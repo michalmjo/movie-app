@@ -44,7 +44,6 @@ const Header = () => {
         `${apiKeyInfo.baseUrl}${requests.fetchNetflixOriginals}`
       );
       const data = await response.json();
-      console.log(data);
 
       const index = Math.floor(Math.random() * data.results.length - 1);
 

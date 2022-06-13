@@ -8,7 +8,6 @@ const FavouriteList = () => {
   const movieList = useSelector((state) => state.movieList);
   const { movie } = movieList;
   const dispatch = useDispatch();
-  console.log(movie);
 
   const handleDeleteFavMovie = (id) => {
     dispatch(deleteFavMovie({ id }));

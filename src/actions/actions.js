@@ -9,7 +9,7 @@ export const addMovieToList = (id) => ({
   payload: { id },
 });
 
-export const searchMovie = (movie = []) => ({
+export const searchMovies = (movie = []) => ({
   type: movieAction.SEARCH_MOVIE,
   payload: movie,
 });

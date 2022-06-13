@@ -7,7 +7,6 @@ import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import "../styles/modal.css";
 
 const Modal = ({ open, onClose, movie }) => {
-  console.log(movie);
   const [modalMovie, setModalMovie] = useState([]);
   useEffect(() => {
     if (!open) return null;
@@ -24,9 +23,7 @@ const Modal = ({ open, onClose, movie }) => {
     };
 
     fetchMovie();
-  }, []);
-
-  console.log(modalMovie);
+  }, [movie, open]);
 
   const clickedMovie = modalMovie.map((movie) => {
     return (

@@ -4,7 +4,7 @@ import { addMovieToList } from "../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
-const MovieSearchList = ({ movies }) => {
+const MovieSearchList = ({ movies, setValue, inputRef }) => {
   const {
     title,
     original_title,
@@ -25,14 +25,14 @@ const MovieSearchList = ({ movies }) => {
     }, 2000);
   };
 
-  console.log(favListMovie);
   const handleAddMovieToFav = (id) => {
-    console.log(favListMovie);
     if (id) {
       for (const movie of favListMovie) {
         if (id === movie.id) return showIsExist();
       }
       dispatch(addMovieToList(id));
+      setValue("");
+      inputRef.current.value = "";
     }
   };
 

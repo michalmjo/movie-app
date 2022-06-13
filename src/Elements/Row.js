@@ -1,14 +1,20 @@
 import "../styles/row.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "./Modal";
 import { apiKeyInfo } from "../api/apiInformation";
 import LoadingScreen from "./LoadingScreen";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowAltCircleLeft,
+  faArrowAltCircleRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Row = ({ title, fetchUrl, isLargeRow = false }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState([]);
+  const posterRows = useRef();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +30,6 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
 
     fetchData();
   }, [fetchUrl]);
-  console.log(movies);
 
   const handleMovieInfoModal = (e) => {
     setIsModalOpen(true);
@@ -53,12 +58,37 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
     );
   });
 
+  const handleLeftScroll = () => {
+    posterRows.current.scrollLeft =
+      posterRows.current.scrollLeft - posterRows.current.clientWidth / 2 - 20;
+  };
+  const handleRigtScroll = () => {
+    posterRows.current.scrollLeft =
+      posterRows.current.scrollLeft + posterRows.current.clientWidth / 2 - 20;
+  };
+
   return (
     <>
       {loading ? (
         <div className="row">
           <h2>{title}</h2>
-          <div className="row__posters">{allMovies}</div>
+          <div className="row__arrow">
+            <span onClick={handleLeftScroll} className="row__arrow--scroll">
+              <FontAwesomeIcon
+                className="row__arrow--btn"
+                icon={faArrowAltCircleLeft}
+              />
+            </span>
+            <div ref={posterRows} className="row__posters">
+              {allMovies}
+            </div>
+            <span onClick={handleRigtScroll} className="row__arrow--scroll">
+              <FontAwesomeIcon
+                className="row__arrow--btn"
+                icon={faArrowAltCircleRight}
+              />
+            </span>
+          </div>
         </div>
       ) : (
         <LoadingScreen />

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { searchMovie } from "../actions/actions";
+import { useEffect, useRef, useState } from "react";
+import { searchMovies } from "../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import MovieSearchList from "./MovieSearchList";
 import "../styles/searchMovie.css";
@@ -8,6 +8,7 @@ const SearchMovie = () => {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
   const movie = useSelector((state) => state.movieList);
+  const inputRef = useRef();
 
   useEffect(
     (prevState) => {
@@ -17,20 +18,25 @@ const SearchMovie = () => {
             `https://api.themoviedb.org/3/search/movie?api_key=3cbe5c4e11f13be89dfacaaeab649130&query=${value}`
           );
           const data = await response.json();
-          dispatch(searchMovie(data.results));
-          console.log(data.results);
+          dispatch(searchMovies(data.results));
         };
         movieSearch();
       }
     },
-    [value]
+    [value, dispatch]
   );
 
   const { movies } = movie;
 
   const allMovie = movies.map((movie) => {
-    console.log(movie);
-    return <MovieSearchList movies={movie} />;
+    return (
+      <MovieSearchList
+        key={movie.id}
+        inputRef={inputRef}
+        setValue={setValue}
+        movies={movie}
+      />
+    );
   });
 
   const handleSearchMovie = (e) => {
@@ -41,6 +47,7 @@ const SearchMovie = () => {
       <p>{value === "" ? `Search Movie` : null}</p>
       <form className="list__search--movie-form" onChange={handleSearchMovie}>
         <input
+          ref={inputRef}
           placeholder="Add title"
           className="list__search--movie-input"
           type="text"
