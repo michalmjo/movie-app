@@ -32,12 +32,15 @@ const CreateAccount = () => {
 
   return (
     <>
+      <h2 className="form__signIn">Create Account</h2>
       <form className="form__wrapper">
         <label htmlFor="text">email</label>
         <input placeholder="email" ref={emailRef} type="email" />
         <label htmlFor="text">password</label>
         <input placeholder="password" ref={passwordRef} type="password" />
-        <button onClick={handleCreateAccount}>Create</button>
+        <button className="form__wrapper-btn" onClick={handleCreateAccount}>
+          Create
+        </button>
         <div className="form__account">
           <p>You arleady have one ?</p>
           <span onClick={handleBackToLogIn} className="form__account--btn">

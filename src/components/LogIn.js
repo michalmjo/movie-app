@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import "../styles/logIn.css";
 import CreateAccount from "../Elements/CreateAccount";
-import { signOut, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { logInCheck, haveAccount } from "../actions/userAction";
 import { auth } from "../firebase";
@@ -19,7 +19,6 @@ const LogIn = () => {
   console.log(signIn);
 
   const handleSignInUser = () => {
-    console.log("klik");
     dispatch(logInCheck());
   };
 
@@ -27,6 +26,7 @@ const LogIn = () => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
+
     signInWithEmailAndPassword(auth, email, password)
       .then((cred) => {
         navigation("/");
@@ -47,25 +47,34 @@ const LogIn = () => {
           <div className="form">
             {!signIn ? (
               <>
+                <h2 className="form__signIn">Sign In</h2>
                 <form className="form__wrapper">
                   <label htmlFor="text">email</label>
-                  <input ref={emailRef} placeholder="email" type="email" />
+                  <input
+                    ref={emailRef}
+                    placeholder="email"
+                    type="email"
+                    required
+                  />
                   <label htmlFor="text">password</label>
                   <input
                     ref={passwordRef}
                     placeholder="password"
                     type="password"
+                    required
                   />
-                  <button onClick={logInToApp}>Loggin</button>
+                  <button className="form__wrapper-btn" onClick={logInToApp}>
+                    Loggin
+                  </button>
                 </form>
                 <div className="form__account">
                   <p>You don't have account?</p>
-                  <button
+                  <span
                     onClick={handleSignInUser}
                     className="form__account--btn"
                   >
                     Create one
-                  </button>
+                  </span>
                 </div>
               </>
             ) : (
