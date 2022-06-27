@@ -3,6 +3,10 @@ import { v4 as uuid } from "uuid";
 import Navigation from "../Elements/Navigation";
 import { apiKeyInfo, requests } from "../api/apiInformation";
 import "../styles/header.css";
+import { auth } from "../firebase";
+import { signOut } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { haveAccount } from "../actions/userAction";
 
 const navigationElements = [
   {
@@ -21,6 +25,7 @@ const Header = () => {
   const truncate = (string, n = 150) => {
     return string?.length > n ? string.substr(0, n - 1) + `...` : string;
   };
+  const dispatch = useDispatch();
 
   const [movie, setMovie] = useState();
 
@@ -52,6 +57,17 @@ const Header = () => {
     fetchData();
   }, []);
 
+  const logOutUser = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("user log out");
+        dispatch(haveAccount(false));
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   const navigation = navigationElements.map((nav) => (
     <Navigation key={nav.id} nav={nav} />
   ));
@@ -59,6 +75,9 @@ const Header = () => {
     <>
       <nav className={`mainNavigation ${showMenu && "mainNavigation--bg"}`}>
         <ul className="mainNavigation__list">{navigation}</ul>
+        <div className="logOut">
+          <button onClick={logOutUser}>LogOut</button>
+        </div>
       </nav>
       <section className="banner">
         <div
