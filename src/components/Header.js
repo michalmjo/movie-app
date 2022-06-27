@@ -5,7 +5,7 @@ import { apiKeyInfo, requests } from "../api/apiInformation";
 import "../styles/header.css";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { haveAccount } from "../actions/userAction";
 
 const navigationElements = [
@@ -26,6 +26,7 @@ const Header = () => {
     return string?.length > n ? string.substr(0, n - 1) + `...` : string;
   };
   const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.userReducer);
 
   const [movie, setMovie] = useState();
 
@@ -74,10 +75,15 @@ const Header = () => {
   return (
     <>
       <nav className={`mainNavigation ${showMenu && "mainNavigation--bg"}`}>
-        <ul className="mainNavigation__list">{navigation}</ul>
-        <div className="logOut">
-          <button onClick={logOutUser}>LogOut</button>
-        </div>
+        <ul className="mainNavigation__list">
+          {navigation}
+          <div className="logOut">
+            <span className="logOut__user">{userInfo.userInformation}</span>
+            <button className="logOut__btn" onClick={logOutUser}>
+              LogOut
+            </button>
+          </div>
+        </ul>
       </nav>
       <section className="banner">
         <div

@@ -18,6 +18,20 @@
         align-items: center;
 
 
+        .logOut {
+            display: flex;
+            margin-left: auto;
+            padding-right: 50px;
+
+            &__btn {
+                background-color: transparent;
+                border: none;
+                color: white;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+        }
+
 
         li {
             margin: 0 25px;

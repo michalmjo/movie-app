@@ -6,7 +6,7 @@ import "../styles/app.css";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { userInformation } from "../actions/userAction";
+import { userInformation, haveAccount } from "../actions/userAction";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,9 @@ const App = () => {
         dispatch(userInformation(user.email));
         console.log(user);
         console.log(user.email);
+        dispatch(haveAccount(true));
       } else {
+        dispatch(haveAccount(false));
         console.log("Wylogowany", user);
       }
     });

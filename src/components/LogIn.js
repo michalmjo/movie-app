@@ -11,8 +11,6 @@ const LogIn = () => {
   const alreadyHaveAccount = useSelector((state) => state.userReducer);
   const signIn = alreadyHaveAccount.isUserlogInCheck;
 
-  const userInfoLogIn = alreadyHaveAccount.userInformation;
-  console.log(userInfoLogIn);
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigation = useNavigate();
@@ -25,16 +23,6 @@ const LogIn = () => {
     dispatch(logInCheck());
   };
 
-  const logOutUser = () => {
-    console.log("log out user");
-    signOut(auth)
-      .then(() => {
-        console.log("user log out");
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  };
   const logInToApp = (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
@@ -83,12 +71,6 @@ const LogIn = () => {
             ) : (
               <CreateAccount />
             )}
-          </div>
-          <div className="logOut">
-            <button onClick={logOutUser}>LogOut</button>
-          </div>
-          <div className="loggedUser">
-            <p>Zalogowany jako: {userInfoLogIn && userInfoLogIn}</p>
           </div>
         </div>
       </div>
