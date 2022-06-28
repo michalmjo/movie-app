@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "../styles/logIn.css";
 import CreateAccount from "../Elements/CreateAccount";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -6,10 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { logInCheck, haveAccount } from "../actions/userAction";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import FormValidation from "./FormValidation";
 
 const LogIn = () => {
   const alreadyHaveAccount = useSelector((state) => state.userReducer);
   const signIn = alreadyHaveAccount.isUserlogInCheck;
+  const [validate, setValidate] = useState(false);
+  const [messageFrom, setMessageForm] = useState("");
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -21,11 +24,15 @@ const LogIn = () => {
   const handleSignInUser = () => {
     dispatch(logInCheck());
   };
+  const messageValidation = {
+    userOrPass: "Wrong User or password",
+  };
 
   const logInToApp = (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
+    console.log(passwordRef.current.value.length);
 
     signInWithEmailAndPassword(auth, email, password)
       .then((cred) => {
@@ -33,11 +40,23 @@ const LogIn = () => {
         emailRef.current.value = null;
         passwordRef.current.value = null;
         dispatch(haveAccount(true));
+        setValidate(false);
         console.log("user logged in: ", cred.user);
       })
       .catch((err) => {
+        setValidate(true);
+        validation(messageValidation);
         console.log(err.message);
       });
+  };
+
+  const validation = (message) => {
+    setMessageForm(message);
+    console.log(`To jest wiadomosc z validation ${message}`);
+    setTimeout(() => {
+      setValidate(false);
+      setMessageForm("");
+    }, 2000);
   };
 
   return (
@@ -48,13 +67,13 @@ const LogIn = () => {
             {!signIn ? (
               <>
                 <h2 className="form__signIn">Sign In</h2>
-                <form className="form__wrapper">
+                <form onSubmit={logInToApp} className="form__wrapper">
                   <label htmlFor="text">email</label>
                   <input
+                    required
                     ref={emailRef}
                     placeholder="email"
                     type="email"
-                    required
                   />
                   <label htmlFor="text">password</label>
                   <input
@@ -63,9 +82,7 @@ const LogIn = () => {
                     type="password"
                     required
                   />
-                  <button className="form__wrapper-btn" onClick={logInToApp}>
-                    Loggin
-                  </button>
+                  <button className="form__wrapper-btn">Loggin</button>
                 </form>
                 <div className="form__account">
                   <p>You don't have account?</p>
@@ -80,6 +97,7 @@ const LogIn = () => {
             ) : (
               <CreateAccount />
             )}
+            {validate && <FormValidation message={messageFrom} />}
           </div>
         </div>
       </div>
