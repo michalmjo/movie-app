@@ -1,4 +1,4 @@
-[Likt Live Movie App:](https://michalmjo.github.io/movie-app/)
+Link Live: [Movie App](https://michalmjo.github.io/movie-app/)
 
 # Getting Started with Create React App
 
